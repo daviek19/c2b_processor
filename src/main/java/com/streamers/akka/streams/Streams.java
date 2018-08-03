@@ -11,7 +11,7 @@ import akka.util.ByteString;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import scala.concurrent.duration.FiniteDuration;
+import scala.concurrent.duration.Duration;
 
 public class Streams {
 
@@ -28,7 +28,7 @@ public class Streams {
                         new File("input.txt").toPath(),
                         1,
                         0,
-                        FiniteDuration.fromNanos(1000 * 5)
+                        Duration.create(5, "seconds")
                 )
                 .via(Framing.delimiter(newLineBytes, 100, FramingTruncation.ALLOW));
 
